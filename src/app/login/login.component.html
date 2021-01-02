@@ -1,0 +1,65 @@
+
+
+<!-- As a heading -->
+<nav class="navbar navbar-dark bg-primary">
+  <span class="navbar-brand mb-0 h1">My Bookings</span>
+</nav>
+<h1>Login</h1>
+<form class="container" [formGroup]="loginForm">
+  <div class="form-group">
+    <input type="email" class="form-control" name="email1" [(ngModel)]="email1" placeholder="Email ID" formControlName="email" required>
+    <span class="error" *ngIf="email.invalid && email.touched" >Email is required</span>
+  </div>
+  <div class="form-group">
+   <input type="password" class="form-control" name="password1" [(ngModel)]="password1" placeholder="Password" formControlName="password" required>
+   <span class="error" *ngIf="password.invalid && password.touched" >Password is required</span>
+  </div>
+  <button type="submit" class="form-control" (click)="logIn()" mat-raised-button color="warn">Login</button>
+</form>
+
+<div class="card-footer" id="Sticky">
+  <small class="text-muted">Persistent</small>
+  <small class="text-muted" style="float:right;">Privacy Notice|Cookie Policy|Terms Of Use © Persistent Systems</small>
+
+</div>
+
+<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<h2>Validation Example</h2>
+
+
+
+<form name="myForm" novalidate class="container">
+
+
+<div class="form-group">
+  <div>
+    <p>Email:<br>
+      <input type="email" name="email" class="form-control" [(ngModel)]="email" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+      <span ng-show="myForm.email.$error.required">Email is required.</span>
+      <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+      </span>
+    </p>
+    </div>
+<div>
+<p>Password:<br>
+  <input type="password" name="password" class="form-control" [(ngModel)]="password" required>
+  <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+  <span ng-show="myForm.password.$error.required">Email is required.</span>
+  <span ng-show="myForm.password.$error.password">Invalid email address.</span>
+  </span>
+</p>
+</div>
+
+<p>
+  <button type="submit"
+  ng-disabled="myForm.password.$dirty && myForm.password.$invalid ||
+  myForm.email.$dirty && myForm.email.$invalid" (click)="logIn()">Login</button>
+</p>
+
+</form-->
+
+
+
+

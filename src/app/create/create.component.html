@@ -1,0 +1,197 @@
+<!--div class="container">
+  <form #myForm="ngForm" >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Firstname</label>
+      <input type="email" class="form-control" name="firstname"  aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Lastname</label>
+      <input type="email" class="form-control" name="lastname"  aria-describedby="emailHelp" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">ID</label>
+      <input type="email" class="form-control" name="id" aria-describedby="emailHelp" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Gender</label>
+      <input type="email" class="form-control" name="gender" aria-describedby="emailHelp" ngModel>
+    </div>
+    <div class="form-group"> 
+      <label for="exampleInputEmail1">Grade</label>
+      <input type="email" class="form-control" name="grade" aria-describedby="emailHelp" ngModel>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addUser(myForm.value)"> <a routerLink="/list">Submit</a></button>
+  </form>
+</div-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Bookings</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/dashboard/page1/:pageOneID">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/create">Employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/create">Rules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/create">Configure</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" routerLink="/create">Approval</a>
+        </li>
+        <li class="nav-item">
+          <!--div class="dropdown btn-group">
+          <a class="dropdown-toggle" data-toggle="dropdown" >
+            <span class="material-icons">account_circle</span></a>
+          <ul class="dropdown-menu">
+            <li>Foo</li>
+          </ul>
+          </div-->
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span class="material-icons">account_circle</span>
+          </button>
+            <mat-menu #menu="matMenu">
+              <a routerLink="/login">Sign Out</a>             
+            </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" mat-raised-button color="warn" style="float: right;margin-top: 10px;margin-bottom: 10px;">Add new employee</button>
+<!--button type="button" style="float: right;"><a routerLink="/login">Sign Out</a></button-->
+<br>
+       <div id="id01" class="modal" style="box-shadow: 0 0 0 100vmax rgba(0,0,0,0.6);position: fixed;
+       top: 10%;
+       left: 18.5%;
+       z-index: 1050;
+       width: 30%;
+       height: 85%;
+       margin-left: 20%;">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" (click)="nouser()">×</span>
+        <form class="modal-content animate" #myForm="ngForm">
+          <div class="form-group">
+      <label>Firstname</label>
+      <input type="text" class="form-control" name="firstname"   [(ngModel)]="userObj.firstname" id="firstname"
+      required ngModel name="firstname" #firstname="ngModel" placeholder=" " >
+        </div>
+    <div class="form-group">
+      <label>Lastname</label>
+      <input type="text" class="form-control" name="lastname"  [(ngModel)]="userObj.lastname" id="lastname"
+      required ngModel name="lastname" #lastname="ngModel" >
+      </div>
+    <div class="form-group">
+      <label>ID</label>
+      <input type="number" class="form-control" name="id" [(ngModel)]="userObj.id" id="id"
+      required ngModel name="id" #id="ngModel">
+    </div>
+    <div class="form-group">
+      <label >Gender</label>
+      <select type="email" class="form-control" name="gender"[(ngModel)]="userObj.gender" >
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+     </select>
+    </div>
+    <div class="form-group"> 
+      <label>Grade</label>
+      <select type="text" class="form-control" name="grade" [(ngModel)]="userObj.grade">
+        <option value="3.0x">3.0x</option>
+        <option value="4.0x">4.0x</option>
+        <option value="5.0x">5.0x</option>
+     </select>
+    </div>
+    <div class="clearfix">
+      <button type="submit" (click)="addUser(myForm.value)" *ngIf="!isEdit" mat-raised-button color="warn" style="float: right;margin-left:5px;" onclick="document.getElementById('id01').style.display='none'" >Submit</button>
+      <button type="submit" (click)="updateUser()" *ngIf="isEdit" onclick="document.getElementById('id01').style.display='none'"mat-raised-button color="warn" style="float: right;margin-left:5px;">Submit</button>
+      <button mat-raised-button type="button" onclick="document.getElementById('id01').style.display='none'"style="float: right;"(click)="nouser()">Cancel</button>
+    </div>
+  </form>
+   
+</div>
+
+<div class="center">
+<!--mat-spinner *ngIf="showSpinner" class="custom-spinner" strokeWidth="5" ></mat-spinner-->
+<div class="loader"*ngIf="showSpinner"></div>
+</div>
+<div *ngIf="!showSpinner" >
+<h1 *ngIf="isAdd">No Employee data available</h1>
+<br>
+<div  *ngIf="!isAdd" class="w3-container">
+<br>
+<table class="w3-table-all w3-card-4">
+  <thead>
+    <tr>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">ID</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of allUser | paginate:{itemsPerPage:1,currentPage:p}">
+      <td>{{user.firstname}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.gender}}</td>
+      <td>{{user.grade}}</td>
+  
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>
+        </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item  onclick="document.getElementById('id01').style.display='block'"(click)="editUser(user)" >Edit</button>
+            <button mat-menu-item (click)="deleteUser(user)">Delete</button>              
+          </mat-menu>
+
+          
+    </tr>
+    
+  </tbody>
+</table>
+
+<pagination-controls (pageChange)="p = $event" previousLabel=""
+nextLabel="" class="pagination"></pagination-controls>
+
+
+</div>
+
+
+
+</div>
+
+<div class="card-footer" id="Sticky">
+  <small class="text-muted">Persistent</small>
+  <small class="text-muted" style="float:right;">Privacy Notice|Cookie Policy|Terms Of Use © Persistent Systems</small>
+
+</div>
+
+<script>
+  var modal = document.getElementById('id01');  
+
+
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          
+          modal.style.display = "block";
+      }
+  }
+</script>
+
+<router-outlet></router-outlet>
+
+

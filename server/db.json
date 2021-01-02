@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "firstname": " ww",
+      "lastname": "ff",
+      "id": 76767,
+      "gender": "Male",
+      "grade": "4.0x"
+    },
+    {
+      "firstname": "abc",
+      "lastname": "sadsa",
+      "id": 32131,
+      "gender": "Male",
+      "grade": "4.0x"
+    },
+    {
+      "firstname": " sdsa",
+      "lastname": "dsd",
+      "id": 4232,
+      "gender": "Female",
+      "grade": "3.0x"
+    }
+  ]
+}
