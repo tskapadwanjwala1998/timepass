@@ -73,7 +73,7 @@ import {MatTableModule} from '@angular/material/table'
     BreadcrumbModule,
     MatPaginatorModule,
     NgxPaginationModule,
-    MatTableModule
+    MatTableModule  
   ],
   bootstrap: [AppComponent],
 })

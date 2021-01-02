@@ -98,6 +98,7 @@ export class CreateComponent implements OnInit {
           this.isAdd=false;
           for(let index in this.allUser){
             this.collection.push(this.allUser[index])
+            
           }
         }
 
